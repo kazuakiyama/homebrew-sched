@@ -41,7 +41,7 @@ class Sched < Formula
       Don't forget to add paths for PGPLOT before using SCHED.
       For instance, you can add the following lines to your ~/.bash_profile or ~/.zshrc file
       (and remember to source the file to update your current session):
-      PGPLOT_DIR=`brew --prefix pgplot`/share
+      PGPLOT_DIR=`brew --prefix pgplot`/lib
       if [ -e $PGPLOT_DIR ]; then
         export PGPLOT_DIR=$PGPLOT_DIR
         export PGPLOT_DEV=/xwin       # This is up to your preference. /xserve might be your choise.
