@@ -22,15 +22,15 @@ class Sched < Formula
     pgplotlib = "-L#{HOMEBREW_PREFIX}/lib -lpgplot -lX11 -lpng"
     xld = "-L#{HOMEBREW_PREFIX}/lib -lX11"
     
-    on_intel do
-      fcommand = "gfortran -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-    end
-    on_arm do
-      fcommand = "gfortran -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-    end
-
     inreplace "src/Makefile" do |s|
-      s.change_make_var! "FC", fcommand
+      on_intel do
+        fcommand = "gfortran -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
+        s.change_make_var! "FC", fcommand
+      end
+      on_arm do
+        fcommand = "gfortran -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
+        s.change_make_var! "FC", fcommand
+      end
       s.change_make_var! "LPGPLOT", pgplotdir
       s.change_make_var! "LDPGPLOT", pgplotlib
       s.change_make_var! "XLD", xld
