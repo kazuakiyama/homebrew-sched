@@ -40,9 +40,15 @@ class Sched < Formula
 
   def caveats
     <<~EOF
-      Don't forget to add paths for PGPLOT before using SCHED.
+      As zsh has `sched` as a default command, users may not run SCHED just by typing `sched` in their shells. 
+      For an ad-hoc mitigation, this homebrew formula will add an alias `nsched` (for "N"RAO SCHED) to the sched command so that users don't have to type the full path in zsh.
+      
+      The additional files (doc, notes, examples, setting files, etc) will be installed into the directory given by `brew --prefix sched`.
+      
+      Don't forget to add paths for PGPLOT and SCHED before using SCHED.
       For instance, you can add the following lines to your ~/.bash_profile or ~/.zshrc file
       (and remember to source the file to update your current session):
+      
       PGPLOT_DIR=`brew --prefix pgplot`/lib
       if [ -e $PGPLOT_DIR ]; then
         export PGPLOT_DIR=$PGPLOT_DIR
@@ -50,7 +56,6 @@ class Sched < Formula
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PGPLOT_DIR
       fi
 
-      You should also add the SCHED variable.
       SCHED_DIR=`brew --prefix sched`
       if [ -e $SCHED_DIR ]; then
         export SCHED=$SCHED_DIR
