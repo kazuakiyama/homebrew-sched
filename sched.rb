@@ -1,4 +1,4 @@
-class SCHED < Formula
+class Sched < Formula
   desc "A program for planning and scheduling Very Long Baseline Interferometry (VLBI) observations"
   homepage "https://www.aoc.nrao.edu/software/sched/index.html"
   url "ftp://ftp.aoc.nrao.edu/pub/sched/sched_11.8/sched_11.8.tar.gz"
