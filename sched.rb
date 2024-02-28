@@ -24,12 +24,12 @@ class Sched < Formula
     
     on_intel do
       fcommand = "gfortran -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-      system "cd src && make", "FC='#{fcommand}'", "LPGPLOT=#{pgplotdir}", "LDPGPLOT=#{pgplotlib}", "XLD=#{xld}"
+      system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT=#{pgplotlib} XLD=#{xld}"
     end
 
     on_arm do
       fcommand = "gfortran -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-      system "cd src && make", "FC='#{fcommand}'", "LPGPLOT=#{pgplotdir}", "LDPGPLOT=#{pgplotlib}", "XLD=#{xld}"
+      system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT=#{pgplotlib} XLD=#{xld}"
     end
     
     bin.install ["bin/linux64gf/sched", "bin/schclean", "bin/crd_noneg"]
