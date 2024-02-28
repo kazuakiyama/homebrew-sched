@@ -23,10 +23,10 @@ class Sched < Formula
     xld = "-L#{HOMEBREW_PREFIX}/lib -lX11"
     
     on_intel do
-      fcommand = "#{FC} -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
+      fcommand = "gfortran -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
     end
     on_arm do
-      fcommand = "#{FC} -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
+      fcommand = "gfortran -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
     end
 
     inreplace "src/Makefile" do |s|
