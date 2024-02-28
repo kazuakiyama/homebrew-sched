@@ -4,7 +4,7 @@ This is a Homebrew formula for [SCHED](https://www.aoc.nrao.edu/software/sched/i
 ## Installation of SCHED with brew using this formula
 homebrew recently removed pgplot for a Licence issue. 
 I made [a back up (+ minor modificaiton) of the latest pgplot formula just before being removed](https://github.com/kazuakiyama/homebrew-pgplot).
-You just need to tap this repository and install difmap.
+You just need to tap this repository and install sched.
 
 ```bash
 # install PGPLOT
