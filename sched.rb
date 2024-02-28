@@ -22,22 +22,16 @@ class Sched < Formula
     pgplotlib = "-L#{HOMEBREW_PREFIX}/lib -lpgplot -lX11 -lpng"
     xld = "-L#{HOMEBREW_PREFIX}/lib -lX11"
     
-    inreplace "src/Makefile" do |s|
-      on_intel do
-        fcommand = "gfortran -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-        s.change_make_var! "FC", fcommand
-      end
-      on_arm do
-        fcommand = "gfortran -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-        s.change_make_var! "FC", fcommand
-      end
-      s.change_make_var! "LPGPLOT", pgplotdir
-      s.change_make_var! "LDPGPLOT", pgplotlib
-      s.change_make_var! "XLD", xld
+    on_intel do
+      fcommand = "gfortran -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
+      system "cd src; make", "FC=#{fcommand}", "LPGPLOT=#{pgplotdir}", "LDPGPLOT=#{pgplotlib}", "XLD=#{xld}"
     end
 
-    system "cd src; make"
-
+    on_arm do
+      fcommand = "gfortran -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
+      system "cd src; make", "FC=#{fcommand}", "LPGPLOT=#{pgplotdir}", "LDPGPLOT=#{pgplotlib}", "XLD=#{xld}"
+    end
+    
     bin.install ["bin/linux64gf/sched", "bin/schclean", "bin/crd_noneg"]
     share.install Dir["README*", "*notes.txt", "catalogs", "doc", "examples", "setups"]
   end
