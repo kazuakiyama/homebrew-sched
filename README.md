@@ -11,7 +11,7 @@ You just need to tap this repository and install sched.
 brew tap kazuakiyama/pgplot
 brew install pgplot
 
-# install DIFMAP
+# install NRAO SCHED
 brew tap kazuakiyama/sched
 brew install sched
 ```
