@@ -19,17 +19,18 @@ class Sched < Formula
     ENV.deparallelize
 
     pgplotdir = "#{HOMEBREW_PREFIX}/lib"
-    pgplotlib = "-L#{HOMEBREW_PREFIX}/lib -lpgplot -lX11 -lpng"
+    pgplotlib = "-L#{pgplotdir} -lpgplot -lX11 -lpng"
     xld = "-L#{HOMEBREW_PREFIX}/lib -lX11"
     
     on_intel do
       fcommand = "gfortran -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-      system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT=#{pgplotlib} XLD=#{xld}"
+      system "echo #{ENV.fc}"
+      system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT='#{pgplotlib}' XLD='#{xld}'"
     end
 
     on_arm do
       fcommand = "gfortran -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-      system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT=#{pgplotlib} XLD=#{xld}"
+      system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT='#{pgplotlib}' XLD='#{xld}'"
     end
     
     bin.install ["bin/linux64gf/sched", "bin/schclean", "bin/crd_noneg"]
