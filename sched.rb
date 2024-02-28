@@ -32,7 +32,9 @@ class Sched < Formula
       system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT='#{pgplotlib}' XLD='#{xld}'"
     end
     
-    bin.install ["bin/linux64gf/sched", "bin/schclean", "bin/crd_noneg"]
+    system "cd bin/linux64gf; ln -s ./sched nsched"
+
+    bin.install ["bin/linux64gf/sched", "bin/linux64gf/nsched", "bin/schclean", "bin/crd_noneg"]
     prefix.install Dir["README*", "*notes.txt", "catalogs", "doc", "examples", "setups"]
   end
 
@@ -49,7 +51,7 @@ class Sched < Formula
       fi
 
       You should also add the SCHED variable.
-      SCHED_DIR='brew --prefix sched'
+      SCHED_DIR=`brew --prefix sched`
       if [ -e $SCHED_DIR ]; then
         export SCHED=$SCHED_DIR
       fi

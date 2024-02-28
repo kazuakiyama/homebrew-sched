@@ -16,7 +16,8 @@ brew tap kazuakiyama/sched
 brew install sched
 ```
 
-Don't forget to add paths for PGPLOT before using DIFMAP.
+All the additional files will be installed into the directory given by `brew --prefix sched`.
+You should define $SCHED once the package is installed. Also, don't forget to add paths for PGPLOT before using DIFMAP.
 For instance, you can add the following line to your ~/.bashrc_profile or ~/.zprofile files (and remember to source the file to update your current session):
 
 ```bash
@@ -25,6 +26,11 @@ if [ -e $PGPLOT_DIR ]; then
   export PGPLOT_DIR=$PGPLOT_DIR
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PGPLOT_DIR
   export PGPLOT_DEV=/xwin # This is up to your preference. /xserve might be your choise.
+fi
+
+SCHED_DIR=`brew --prefix sched`
+if [ -e $SCHED_DIR ]; then
+  export SCHED=$SCHED_DIR
 fi
 ```
 
