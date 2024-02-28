@@ -18,25 +18,21 @@ class SCHED < Formula
     ENV.fortran
     ENV.deparallelize
 
-    inreplace "src/Makefile" do |s|
-      # FC
-      on_intel do
-        FCcom = "#{FC} -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch "
-        s.change_make_var! "FC", FC
-      end
-      on_arm do
-        FCcom = "#{FC} -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-        s.change_make_var! "FC", 
-      end
+    pgplotdir = "#{HOMEBREW_PREFIX}/lib"
+    pgplotlib = "-L#{HOMEBREW_PREFIX}/lib -lpgplot -lX11 -lpng"
+    xld = "-L#{HOMEBREW_PREFIX}/lib -lX11"
+    
+    on_intel do
+      fcommand = "#{FC} -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
+    end
+    on_arm do
+      fcommand = "#{FC} -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
+    end
 
-      # pgplot
-      pgplotdir = "#{HOMEBREW_PREFIX}/lib"
-      pgplotlib = "-L#{HOMEBREW_PREFIX}/lib -lpgplot -lX11 -lpng"
+    inreplace "src/Makefile" do |s|
+      s.change_make_var! "FC", fcommand
       s.change_make_var! "LPGPLOT", pgplotdir
       s.change_make_var! "LDPGPLOT", pgplotlib
-
-      # XLD
-      xld = "-L#{HOMEBREW_PREFIX}/lib -lX11"
       s.change_make_var! "XLD", xld
     end
 
