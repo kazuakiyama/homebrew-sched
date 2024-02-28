@@ -24,7 +24,6 @@ class Sched < Formula
     
     on_intel do
       fcommand = "gfortran -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-      system "echo #{ENV.fc}"
       system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT='#{pgplotlib}' XLD='#{xld}'"
     end
 
