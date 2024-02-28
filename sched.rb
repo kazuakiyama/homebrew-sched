@@ -33,7 +33,7 @@ class Sched < Formula
     end
     
     bin.install ["bin/linux64gf/sched", "bin/schclean", "bin/crd_noneg"]
-    share.install Dir["README*", "*notes.txt", "catalogs", "doc", "examples", "setups"]
+    prefix.install Dir["README*", "*notes.txt", "catalogs", "doc", "examples", "setups"]
   end
 
   def caveats
@@ -46,6 +46,12 @@ class Sched < Formula
         export PGPLOT_DIR=$PGPLOT_DIR
         export PGPLOT_DEV=/xwin       # This is up to your preference. /xserve might be your choise.
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PGPLOT_DIR
+      fi
+
+      You should also add the SCHED variable.
+      SCHED_DIR='brew --prefix sched'
+      if [ -e $SCHED_DIR ]; then
+        export SCHED=$SCHED_DIR
       fi
     EOF
   end
