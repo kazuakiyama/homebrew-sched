@@ -4,7 +4,7 @@ class Sched < Formula
   url "ftp://ftp.aoc.nrao.edu/pub/sched/sched_11.8/sched_11.8.tar.gz"
   version "11.8"
   sha256 "d512af114da189accfb25a626737ae5efd065fd9cf7e21bfff838efc91feeea1"
-  revision 0
+  revision 1
 
   depends_on "gcc"
   depends_on "libx11"
