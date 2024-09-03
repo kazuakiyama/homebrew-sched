@@ -21,15 +21,15 @@ class Sched < Formula
     pgplotdir = "#{HOMEBREW_PREFIX}/lib"
     pgplotlib = "-L#{pgplotdir} -lpgplot -lX11 -lpng"
     xld = "-L#{HOMEBREW_PREFIX}/lib -lX11"
+    cflags = "-Wall -Wno-int-conversion"
+    fflags = "-Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
     
     on_intel do
-      fcommand = "gfortran -Dintel_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-      system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT='#{pgplotlib}' XLD='#{xld}'"
+      system "cd src; make CFLAGS='-Dintel_osx #{cflags}' FFLAGS='-Dintel_osx #{fflags}' LPGPLOT='#{pgplotdir}' LDPGPLOT='#{pgplotlib}' XLD='#{xld}'"
     end
 
     on_arm do
-      fcommand = "gfortran -Darm_osx -Wall -fimplicit-none -fno-backslash -fallow-argument-mismatch"
-      system "cd src; make FC='#{fcommand}' LPGPLOT=#{pgplotdir} LDPGPLOT='#{pgplotlib}' XLD='#{xld}'"
+      system "cd src; make CFLAGS='-Darm_osx #{cflags}' FFLAGS='-Darm_osx #{fflags}' LPGPLOT='#{pgplotdir}' LDPGPLOT='#{pgplotlib}' XLD='#{xld}'"
     end
     
     system "cd bin/linux64gf; ln -s ./sched nsched"
