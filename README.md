@@ -11,7 +11,7 @@ You just need to tap this repository and install sched.
 brew tap kazuakiyama/pgplot
 brew install pgplot
 
-# install DIFMAP
+# install NRAO SCHED
 brew tap kazuakiyama/sched
 brew install sched
 ```
@@ -20,7 +20,7 @@ As zsh has `sched` as a default command, users may not run SCHED just by typing 
 For an ad-hoc mitigation, this homebrew formula will add an alias `nsched` (for "N"RAO SCHED) to the `sched` command so that users don't have to type the full path in zsh. 
 The additional files (doc, notes, examples, setting files, etc) will be installed into the directory given by `brew --prefix sched`. 
 
-You should define `$SCHED` once the package is installed. Also, don't forget to add paths for PGPLOT before using DIFMAP.
+You should define `$SCHED` once the package is installed. Also, don't forget to add paths for PGPLOT.
 For instance, you can add the following line to your ~/.bashrc_profile or ~/.zprofile files (and remember to source the file to update your current session):
 
 ```bash
