@@ -40,4 +40,4 @@ fi
 ## Contact
 If you find any issues related to this brew formula, please post [issues](https://github.com/kazuakiyama/homebrew-sched/issues) in this github repository
 or directly contact me ([Kazu Akiyama](https://sites.mit.edu/kazuakiyama)). I do not frequently check the latest version of the package. Please contact me if you find a newer version of SCHED which is not yet reflected in my formula.
-For any issues on SCHED itself, you should contact Craig Walker at National Radio Astornomy Observatory who has maintained SCHED.
+For any issues on SCHED itself, you should contact the SCHED developer team at the National Radio Astronomy Observatory.
